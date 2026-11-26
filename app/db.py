@@ -1,7 +1,5 @@
 import sqlite3
-
-DB_PATH = "expenses.db"
-
+from .config import DB_PATH
 
 def init_db() -> None:
     """Create the table and indexes if they don't exist. Runs once at startup."""
