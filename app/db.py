@@ -24,10 +24,14 @@ def init_db() -> None:
 
 
 def get_conn():
+
     """FastAPI dependency: one connection per request, always closed."""
+
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row   # rows behave like dicts: row["amount"]
     try:
         yield conn
+
     finally:
+        
         conn.close()
